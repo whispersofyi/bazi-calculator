@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2025 whispersofyi
+Copyright (c) 2025 Whispers of YI
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +19,16 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+Note on Content:
+
+The BaZi calculation algorithms and Day Master personality interpretations are
+provided for educational and personal insight purposes. While based on traditional
+Chinese metaphysical systems, these should not be considered as professional advice
+for major life decisions, medical conditions, or financial planning.
+
+The astronomical calculations (solar time conversion, solar term boundaries) are
+implemented using established formulas and should be accurate for the specified
+date ranges (1900-2025).
