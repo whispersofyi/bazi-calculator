@@ -73,7 +73,7 @@ tz_options = [format_tz_label(o) for o in tz_offsets]
 # UI - stable, serious aesthetic
 # ----------------------
 st.title("Day Master Calculator")
-st.caption("A quiet voice in the scrollstorm - discover your elemental nature through the ancient wisdom of BaZi")
+st.caption("A quiet voice in the scrollstorm — discover your elemental nature through the ancient wisdom of BaZi")
 
 # Sidebar: longitude toggle outside form for immediate show/hide
 with st.sidebar:
@@ -160,7 +160,7 @@ if submit_button:
 
             # Day Master analysis
             if day_master_info:
-                st.header(f"Your Day Master is {day_master_info['name']} â€" {day_master_key} ({day_master_info['element']})")
+                st.header(f"Your Day Master is {day_master_info['name']} — {day_master_key} ({day_master_info['element']})")
                 st.write(day_master_info["description"])
 
                 st.subheader("Natural Strengths & Positive Traits")
@@ -207,9 +207,9 @@ if submit_button:
                 # Gentle notices about scale of correction
                 total_corr = abs(long_corr + eot)
                 if total_corr > 30:
-                    st.write("- **Note:** Large time correction applied â€" results may differ significantly from clock-time calculations.")
+                    st.write("- **Note:** Large time correction applied — results may differ significantly from clock-time calculations.")
                 elif total_corr > 15:
-                    st.write("- **Note:** Moderate time correction applied â€" this improves accuracy for BaZi analysis.")
+                    st.write("- **Note:** Moderate time correction applied — this improves accuracy for BaZi analysis.")
                 
                 st.write("")
                 st.write("**Four Pillars (based on solar time + solar terms):**")
@@ -226,9 +226,9 @@ if submit_button:
                 st.write(
                     "This tool converts civil (clock) time to apparent solar time and applies traditional Chinese solar term boundaries for BaZi calculations. "
                     "Three corrections are applied:\n\n"
-                    "1. Longitude correction â€" adjusts for difference between your longitude and your timezone meridian.\n"
-                    "2. Equation of Time â€" accounts for Earth's orbital eccentricity and axial tilt (seasonal Â± ~16 minutes).\n"
-                    "3. Solar Term Boundaries â€" uses traditional Chinese calendar boundaries (e.g., ç«‹æ˜¥ for new year) instead of Western calendar dates.\n\n"
+                    "1. Longitude correction — adjusts for difference between your longitude and your timezone meridian.\n"
+                    "2. Equation of Time — accounts for Earth's orbital eccentricity and axial tilt (seasonal Â± ~16 minutes).\n"
+                    "3. Solar Term Boundaries — uses traditional Chinese calendar boundaries (e.g., ç«‹æ˜¥ for new year) instead of Western calendar dates.\n\n"
                     "Combined, these provide professional-grade accuracy for calculating all Four Pillars correctly."
                 )
 
@@ -267,4 +267,4 @@ else:
     st.markdown("**Why precision matters:** These corrections can shift your Hour Pillar and, in edge cases, your Day Master compared to clock-time-only calculators. Most online BaZi tools ignore these astronomical realities and use Western calendar boundaries, potentially giving you incorrect results.")
     
     st.caption("This calculator does not store or log personal information.")
-    st.caption("Â© 2025 Whispers of YI â€" Code under MIT, Guides under CC BY-NC-ND 4.0")
+    st.caption("Â© 2025 Whispers of YI — Code under MIT, Guides under CC BY-NC-ND 4.0")
