@@ -235,6 +235,7 @@ if submit_button:
             # Privacy + back link
             st.markdown("---")
             st.caption("This calculator does not store or log personal information.")
+			st.caption("© 2025 Whispers of YI — Code under MIT, Guides under CC BY-NC-ND 4.0")
             st.markdown("[Back to Whispers of YI](https://whispersofyi.github.io/)")
 
         except Exception as e:
