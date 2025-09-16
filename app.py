@@ -80,7 +80,7 @@ with st.sidebar:
     st.header("Birth Information")
     use_longitude = st.checkbox("Enable longitude correction for maximum precision", value=False)
     if use_longitude:
-        st.markdown("Enter your longitude in decimal degrees (e.g., Hong Kong = 114.1694Â°E, London = -0.1276Â°W) for the most accurate solar time conversion.")
+        st.markdown("Enter your longitude in decimal degrees (e.g., Hong Kong = 114.1694° E, London = -0.1276° W) for the most accurate solar time conversion.")
 
     with st.form("birth_form"):
         current_year = datetime.datetime.now().year
@@ -187,7 +187,7 @@ if submit_button:
                 st.write("**Input (civil clock time):**")
                 st.write(f"- Date: {civil_dt.strftime('%B %d, %Y')}")
                 st.write(f"- Time: {civil_dt.strftime('%H:%M')} ({selected_tz})")
-                st.write(f"**Longitude used for correction:** {longitude_used:+.4f}Â° (decimal degrees)")
+                st.write(f"**Longitude used for correction:** {longitude_used:+.4f}° (decimal degrees)")
                 st.write("")
                 st.write("**Converted to Apparent Solar Time:**")
                 st.write(f"- Apparent Solar Time: {solar_dt.strftime('%B %d, %Y at %H:%M:%S')}")
@@ -227,8 +227,8 @@ if submit_button:
                     "This tool converts civil (clock) time to apparent solar time and applies traditional Chinese solar term boundaries for BaZi calculations. "
                     "Three corrections are applied:\n\n"
                     "1. Longitude correction — adjusts for difference between your longitude and your timezone meridian.\n"
-                    "2. Equation of Time — accounts for Earth's orbital eccentricity and axial tilt (seasonal Â± ~16 minutes).\n"
-                    "3. Solar Term Boundaries — uses traditional Chinese calendar boundaries (e.g., ç«‹æ˜¥ for new year) instead of Western calendar dates.\n\n"
+                    "2. Equation of Time — accounts for Earth's orbital eccentricity and axial tilt (seasonal ± ~16 minutes).\n"
+                    "3. Solar Term Boundaries — uses traditional Chinese calendar boundaries (e.g., 立春 for new year) instead of Western calendar dates.\n\n"
                     "Combined, these provide professional-grade accuracy for calculating all Four Pillars correctly."
                 )
 
@@ -262,9 +262,9 @@ else:
     st.write("Corrects for Earth's elliptical orbit and axial tilt, which causes the sun to run fast or slow throughout the year. This seasonal variation ranges from -14 to +16 minutes.")
     
     st.markdown("**Solar Term Boundaries**")
-    st.write("Uses traditional Chinese calendar boundaries (like ç«‹æ˜¥ for New Year) instead of Western calendar dates. This ensures your Year and Month pillars reflect the authentic BaZi system.")
+    st.write("Uses traditional Chinese calendar boundaries (like 立春 for New Year) instead of Western calendar dates. This ensures your Year and Month pillars reflect the authentic BaZi system.")
     
     st.markdown("**Why precision matters:** These corrections can shift your Hour Pillar and, in edge cases, your Day Master compared to clock-time-only calculators. Most online BaZi tools ignore these astronomical realities and use Western calendar boundaries, potentially giving you incorrect results.")
     
     st.caption("This calculator does not store or log personal information.")
-    st.caption("Â© 2025 Whispers of YI — Code under MIT, Guides under CC BY-NC-ND 4.0")
+    st.caption("© 2025 Whispers of YI — Code under MIT, Guides under CC BY-NC-ND 4.0")
