@@ -73,7 +73,7 @@ tz_options = [format_tz_label(o) for o in tz_offsets]
 # UI - stable, serious aesthetic
 # ----------------------
 st.title("Day Master Calculator")
-st.caption("A quiet voice in the scrollstorm â€" discover your elemental nature through the ancient wisdom of BaZi")
+st.caption("A quiet voice in the scrollstorm - discover your elemental nature through the ancient wisdom of BaZi")
 
 # Sidebar: longitude toggle outside form for immediate show/hide
 with st.sidebar:
