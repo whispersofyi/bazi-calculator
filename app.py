@@ -13,32 +13,79 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Minimal, stable sans-serif override + pillar styling
+# Noto Serif Light font styling + pillar styling
 st.markdown(
     """
     <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@300;400;500&display=swap');
+    
     html, body, [class*="css"] {
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+        font-family: 'Noto Serif', serif !important;
+        font-weight: 300 !important;
         background-color: #ffffff !important;
         color: #000000 !important;
     }
+    
+    .main .block-container {
+        font-family: 'Noto Serif', serif !important;
+        font-weight: 300 !important;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Noto Serif', serif !important;
+        font-weight: 400 !important;
+        color: #111111 !important;
+    }
+    
+    .stMarkdown p, .stText, .stCaption {
+        font-family: 'Noto Serif', serif !important;
+        font-weight: 300 !important;
+        line-height: 1.7 !important;
+    }
+    
+    .stCaption {
+        color: #555555 !important;
+        font-style: italic;
+    }
+    
     .pillar-box {
         text-align: center;
         margin: 10px 0;
+        font-family: 'Noto Serif', serif !important;
     }
     .pillar-chinese {
         font-size: 56px;
         font-weight: 700;
         line-height: 1;
+        color: #111111;
     }
     .pillar-caption {
         font-size: 14px;
         color: #333333;
         margin-top: 6px;
+        font-family: 'Noto Serif', serif !important;
+        font-weight: 300;
     }
     .small-note {
         color: #555555;
         font-size: 13px;
+        font-family: 'Noto Serif', serif !important;
+        font-weight: 300;
+    }
+    
+    .sidebar .sidebar-content {
+        font-family: 'Noto Serif', serif !important;
+        font-weight: 300 !important;
+    }
+    
+    .stButton > button {
+        font-family: 'Noto Serif', serif !important;
+        font-weight: 400 !important;
+    }
+    
+    .stSelectbox label, .stNumberInput label {
+        font-family: 'Noto Serif', serif !important;
+        font-weight: 300 !important;
     }
     </style>
     """,
@@ -70,7 +117,7 @@ tz_offsets = [i * 0.5 for i in range(-24, 29)]  # -12.0 .. +14.0 step 0.5
 tz_options = [format_tz_label(o) for o in tz_offsets]
 
 # ----------------------
-# UI - stable, serious aesthetic
+# UI - contemplative aesthetic with Noto Serif
 # ----------------------
 st.title("Day Master Calculator")
 st.caption("A quiet voice in the scrollstorm — discover your elemental nature through the ancient wisdom of BaZi")
@@ -158,27 +205,28 @@ if submit_button:
 
             st.markdown("---")
 
-            # Day Master analysis
+            # Day Master analysis with updated descriptions
             if day_master_info:
-                st.header(f"Your Day Master is {day_master_info['name']} — {day_master_key} ({day_master_info['element']})")
+                st.header(f"Your Day Master: {day_master_info['name']} — {day_master_info['element']}")
                 st.write(day_master_info["description"])
 
-                st.subheader("Natural Strengths & Positive Traits")
-                for t in day_master_info["positive_traits"]:
-                    st.markdown(f"- {t}")
+                # Streamlined sections for conversion optimization
+                with st.expander("Natural Strengths & Positive Traits"):
+                    for t in day_master_info["positive_traits"]:
+                        st.markdown(f"• {t}")
 
-                st.subheader("Growth Areas & Potential Challenges")
-                for t in day_master_info["challenges"]:
-                    st.markdown(f"- {t}")
+                with st.expander("Growth Areas & Potential Challenges"):
+                    for t in day_master_info["challenges"]:
+                        st.markdown(f"• {t}")
 
-                st.subheader("Elemental Harmony & Compatibility")
-                st.write(day_master_info["compatibility"])
+                with st.expander("Elemental Harmony & Compatibility"):
+                    st.write(day_master_info["compatibility"])
 
-                st.subheader("Career Paths & Life Direction")
-                st.write(day_master_info["career_paths"])
+                with st.expander("Career Paths & Life Direction"):
+                    st.write(day_master_info["career_paths"])
 
-                st.subheader("Life Philosophy & Core Values")
-                st.write(day_master_info["life_philosophy"])
+                with st.expander("Life Philosophy & Core Values"):
+                    st.write(day_master_info["life_philosophy"])
             else:
                 st.error("Day Master data unavailable for computed stem.")
 
@@ -221,50 +269,39 @@ if submit_button:
                 st.write("**Julian Date Information:**")
                 st.write(f"- JD (fractional): {pillars['jd']:.6f}")
                 st.write(f"- JD noon integer: {pillars['jd_noon']}")
-                st.markdown("---")
-                st.write("About Solar Time + Solar Term Correction:")
-                st.write(
-                    "This tool converts civil (clock) time to apparent solar time and applies traditional Chinese solar term boundaries for BaZi calculations. "
-                    "Three corrections are applied:\n\n"
-                    "1. Longitude correction — adjusts for difference between your longitude and your timezone meridian.\n"
-                    "2. Equation of Time — accounts for Earth's orbital eccentricity and axial tilt (seasonal ± ~16 minutes).\n"
-                    "3. Solar Term Boundaries — uses traditional Chinese calendar boundaries (e.g., 立春 for new year) instead of Western calendar dates.\n\n"
-                    "Combined, these provide professional-grade accuracy for calculating all Four Pillars correctly."
-                )
 
             # Privacy + back link
             st.markdown("---")
             st.caption("This calculator does not store or log personal information.")
-            st.markdown("[Back to Whispers of YI](https://whispersofyi.github.io/)")
+            st.markdown("[Free Guides & Deeper Companions](https://whispersofyi.gumroad.com/) • [Back to Whispers of YI](https://whispersofyi.github.io/)")
 
         except Exception as e:
             st.error(f"An error occurred during calculation: {e}")
 else:
     # Home / instructions view
-    st.markdown("## How to use")
-    st.write("Enter your exact birth date and time in the sidebar, select the GMT offset for the birth location, optionally enable precise longitude for improved accuracy, then click 'Calculate Day Master'.")
+    st.markdown("## How to Use")
+    st.write("Enter your exact birth date and time in the sidebar, select the GMT offset for your birth location, optionally enable precise longitude for improved accuracy, then click 'Calculate Day Master'.")
     st.write("")
-    st.markdown("**What you'll get:**")
+    st.markdown("**What You'll Discover:**")
     st.markdown(
-        "- Solar-time conversion using longitude and the Equation of Time\n"
-        "- Traditional solar term boundaries for accurate Year and Month pillars\n"
-        "- Four Pillars overview based on authentic Chinese calendar system\n"
-        "- Day Master personality analysis\n"
-        "- Technical diagnostics showing all corrections applied"
+        "- Your Four Pillars calculated using professional-grade solar time conversion\n"
+        "- Traditional solar term boundaries for authentic Chinese calendar accuracy\n"
+        "- Day Master analysis revealing your elemental nature\n"
+        "- Insights into how your element expresses in relationships, career, and life path\n"
+        "- Technical transparency showing all astronomical corrections applied"
     )
     
-    st.markdown("## Solar Time Accuracy")
+    st.markdown("## Why Solar Time Accuracy Matters")
     
-    st.markdown("**Longitude Correction**")
-    st.write("Adjusts for your distance from your timezone's central meridian. This can range from minutes to over an hour depending on your location within the timezone.")
+    st.write("**Longitude Correction** adjusts for your distance from your timezone's central meridian. This can range from minutes to over an hour depending on your location within the timezone.")
     
-    st.markdown("**Equation of Time**")
-    st.write("Corrects for Earth's elliptical orbit and axial tilt, which causes the sun to run fast or slow throughout the year. This seasonal variation ranges from -14 to +16 minutes.")
+    st.write("**Equation of Time** corrects for Earth's elliptical orbit and axial tilt, which causes the sun to run fast or slow throughout the year. This seasonal variation ranges from -14 to +16 minutes.")
     
-    st.markdown("**Solar Term Boundaries**")
-    st.write("Uses traditional Chinese calendar boundaries (like 立春 for New Year) instead of Western calendar dates. This ensures your Year and Month pillars reflect the authentic BaZi system.")
+    st.write("**Solar Term Boundaries** use traditional Chinese calendar transitions (like 立春 for New Year) instead of Western calendar dates. This ensures your Year and Month pillars reflect the authentic BaZi system.")
     
-    st.markdown("**Why precision matters:** These corrections can shift your Hour Pillar and, in edge cases, your Day Master compared to clock-time-only calculators. Most online BaZi tools ignore these astronomical realities and use Western calendar boundaries, potentially giving you incorrect results.")
+    st.info("**Why precision matters:** These corrections can shift your Hour Pillar and, in edge cases, your Day Master compared to simplified calculators. Most online BaZi tools ignore these astronomical realities, potentially giving incorrect results.")
     
+    st.markdown("---")
     st.caption("This calculator does not store or log personal information.")
-    st.caption("© 2025 Whispers of YI — Code under MIT, Guides under CC BY-NC-ND 4.0")
+    st.markdown("[Free Guides & Deeper Companions](https://whispersofyi.gumroad.com/) • [Daily Whispers on YouTube](https://www.youtube.com/@WhispersofYI)")
+    st.caption("© 2025 Whispers of YI — *What is quiet is never absent*")
